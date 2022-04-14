@@ -1,0 +1,72 @@
+select * from aluno;
+select * from professor;
+select * from item;
+
+CREATE TABLE aluno(
+    id_aluno BIGINT NOT NULL,
+    matricula CHARACTER VARYING(255),
+    curso CHARACTER VARYING(255),
+	nomeusuario CHARACTER VARYING(255),
+	login CHARACTER VARYING(255),
+	senha CHARACTER VARYING(255),
+    CONSTRAINT id_aluno PRIMARY KEY(id_aluno)
+)
+
+CREATE SEQUENCE usersequencealu
+INCREMENT 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+START 3;
+
+ALTER TABLE aluno ALTER COLUMN id_aluno SET DEFAULT NEXTVAL('usersequencealu'::regclass);
+
+ALTER TABLE aluno ADD UNIQUE (id_aluno);
+
+
+CREATE TABLE professor(
+    id_professor BIGINT NOT NULL,
+    cod_professor CHARACTER VARYING(255),
+    setor CHARACTER VARYING(255),
+	nomeusuario CHARACTER VARYING(255),
+	login CHARACTER VARYING(255),
+	senha CHARACTER VARYING(255),
+    CONSTRAINT id_professor PRIMARY KEY(id_professor)
+)
+
+CREATE SEQUENCE usersequenceprof
+INCREMENT 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+START 3;
+
+ALTER TABLE professor ALTER COLUMN id_professor SET DEFAULT NEXTVAL('usersequenceprof'::regclass);
+
+ALTER TABLE professor ADD UNIQUE (id_professor);
+
+
+
+CREATE TABLE item(
+    id_item BIGINT NOT NULL,
+	id CHARACTER VARYING(255),
+    nome CHARACTER VARYING(255),
+    autor CHARACTER VARYING(255),
+	tipo CHARACTER VARYING(255),
+	ano CHARACTER VARYING(255),
+	tempoReserva CHARACTER VARYING(255),
+	codUsuario CHARACTER VARYING(255),
+    CONSTRAINT id_item PRIMARY KEY(id_item)
+
+)
+
+CREATE SEQUENCE usersequenceitem
+INCREMENT 1
+MINVALUE 1
+MAXVALUE 9223372036854775807
+START 1;
+
+
+ALTER TABLE item ALTER COLUMN id_item SET DEFAULT NEXTVAL('usersequenceitem'::regclass);
+
+ALTER TABLE item ADD UNIQUE (id_item);
+
+
